@@ -19,6 +19,7 @@
     "@plasmohq/redux-persist": "^6.1.0",
     "@plasmohq/storage": "^0.12.2",
     "@reduxjs/toolkit": "^1.9.5",
+    "@supabase/supabase-js": "^2.43.1",
     "@tanstack/react-query": "^4.29.3",
     "@types/bs58": "^4.0.1",
     "@vespaiach/axios-fetch-adapter": "^0.3.1",

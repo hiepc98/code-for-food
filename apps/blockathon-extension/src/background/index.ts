@@ -1,7 +1,8 @@
 import { MessagePortStream } from '@wallet/extension-stream'
-import { persistor } from 'store'
+import { persistor, store } from 'store'
 import { PORT_BACKGROUND, PORT_CONTENT } from '~common/port'
 import { bootup } from '~controllers/services/boot'
+import { updateRewardPoint } from '~controllers/services/supaBase'
 import { IntegrationRoutingV2 } from '~extension/integrationV2'
 
 const port = new MessagePortStream({
@@ -13,7 +14,7 @@ const routing = new IntegrationRoutingV2()
 
 port.on('data', async (data, writer, sender) => {
   try {
-    console.log('port data', data);
+    console.log('port data', data)
     const result = await routing.handle(Object.assign(data, { sender }))
     writer(result)
   } catch (e) {
@@ -23,6 +24,14 @@ port.on('data', async (data, writer, sender) => {
 
 chrome.action.setBadgeBackgroundColor({
   color: '#0000'
+})
+
+chrome.runtime.onMessage.addListener(function(request, sender) {
+  if (request.name === 'countPoint') {
+    const { activeWallet } = store.getState().wallet
+    updateRewardPoint({ address: activeWallet.address, point: request.point })
+    // await uupdae
+  }
 })
 
 persistor.subscribe(async () => {
@@ -51,7 +60,5 @@ chrome.runtime.onMessage.addListener((message, sender, response) => {
 
   return true
 })
-
-
 
 chrome.runtime.onInstalled.addListener(bootup)
