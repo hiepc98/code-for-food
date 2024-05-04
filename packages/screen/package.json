@@ -18,9 +18,12 @@
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
     "@types/react-router-dom": "^5.2.0",
+    "classnames": "^2.3.2",
     "clsx": "^1.2.1",
     "eslint": "^7.32.0",
     "eslint-config-custom": "workspace:*",
+    "js-big-decimal": "^1.4.1",
+    "numbro": "^2.3.1",
     "rc-slider": "^9.6.4",
     "react": "18.0.0",
     "react-dom": "18.0.0",
@@ -30,28 +33,27 @@
     "tailwindcss": "^3.3.3",
     "tsconfig": "workspace:*",
     "typescript": "^4.5.2",
-    "web3": "^1.10.3",
-    "js-big-decimal": "^1.4.1",
-    "numbro": "^2.3.1",
-    "classnames": "^2.3.2"
+    "web3": "^1.10.3"
   },
   "peerDependencies": {
     "i18next": "^19.8.3"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.6",
+    "@supabase/supabase-js": "^2.43.1",
     "@tanstack/react-query": "^4.29.3",
     "@types/crypto-js": "^4.1.1",
     "@types/lodash": "^4.14.187",
-    "@wallet/core": "^1.1.6",
-    "@wallet/ui": "workspace:*",
+    "@wallet/abi-decoder": "^1.1.0",
     "@wallet/constants": "3.0.4",
+    "@wallet/core": "^1.1.6",
     "@wallet/evm": "^1.1.12",
+    "@wallet/ui": "workspace:*",
     "@wallet/utils": "3.0.5",
-    "@wallet/abi-decoder" : "^1.1.0",
     "axios": "0.21.1",
     "crypto-js": "^4.1.1",
     "dayjs": "^1.11.7",
+    "ethereumjs-util": "7.0.7",
     "i18n": "workspace:*",
     "lodash": "^4.17.21",
     "react-hook-form": "^7.43.9",
@@ -66,7 +68,6 @@
     "react-use": "^17.4.0",
     "store": "workspace:*",
     "tailwind-merge": "^1.9.0",
-    "ethereumjs-util": "7.0.7",
     "tsdx": "^0.14.1"
   }
 }
