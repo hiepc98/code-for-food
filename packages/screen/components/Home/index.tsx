@@ -3,15 +3,16 @@ import { resetAllReduxStore } from "../Auth/utils"
 import { useAppSelector } from "store"
 import useRouting from "../../hooks/useRouting"
 import { formatNumberBro, truncate } from "@wallet/utils"
-import { Button, Icon, Image, Touch } from '@wallet/ui'
+import { Button, EmptyData, Icon, Image, Touch } from '@wallet/ui'
 import useClipboard from "../../hooks/useClipboard"
 import { useTranslation } from "react-i18next"
-import supabase from "../../services/supaBase"
+import supabase, { updatePointAfterClaim } from "../../services/supaBase"
 import NumCountUp from '../Countup'
 import { fetchRewardData } from "../../services/supaBase"
 import { useEffect, useState } from "react"
 import { encryptService } from '../../services/encryption'
 import Web3 from "web3"
+// import { CLAIM_POINT } from "../../constants"
 
 const abiContract: any = [
   {
@@ -182,6 +183,7 @@ const MainScreen = () => {
 
   const [pointBalance, setPointBalance] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
+  const [isLoadingFud, setIsLoadingFud] = useState(false)
 
   const formatWalletBalance = (balance: number | string) => {
     let val = Number(balance)
@@ -241,20 +243,35 @@ const MainScreen = () => {
   const onRefresh = () => {
     init()
   }
+
+  const onUpdatePointAfterClaim = async () => {
+    const data = await updatePointAfterClaim({address: activeWallet.address, point: pointBalance})
+    setPointBalance(prev => prev - pointBalance)
+  }
   const onClaim = async () => {
+    setIsLoadingFud(true)
     const wallet = encryptService.decryptWallet(wallets[0], true)
     console.log("wallets", (wallet.toObject().privateKey! as string).slice(2))
 
-    const raw = contractFud.methods.claim(web3.utils.toBN("1000000000000000000")).encodeABI()
+    // const balanceReward = pointBalance / 500 * 10**18
+    const dadad18 = web3.utils.toBN('1000000000000000000')
+    const balanceReward = web3.utils.toBN(pointBalance).mul(dadad18).div(web3.utils.toBN(500))
+    // const ddada = web3.utils.toBN(1)
+    console.log("dadadadaddas",balanceReward.toString())
+    const raw = contractFud.methods.claim(balanceReward).encodeABI()
 
     const hash = await sendTx((wallet.toObject().privateKey! as string).slice(2), raw)
     console.log("🦅 ~ hash:", hash)
     updateBalance()
+    await onUpdatePointAfterClaim()
+    setIsLoadingFud(false)
   }
 
   useEffect(() =>{
     updateBalance()
-  })
+  },[])
+
+  console.log("isLoadingFud && pointBalance >= 50",isLoadingFud && pointBalance < 50)
 
   return (
     <div className="h-full">
@@ -291,17 +308,31 @@ const MainScreen = () => {
             {formatWalletBalance(pointBalance)}
           </div>
 
-          {/* <div>
-            Session 1 earning: 50,000
-          </div> */}
+          <div className="mt-3 w-full text-[24px] text-center text-ui04 flex items-center justify-center">
+            <p className="mr-2">FUD </p>
+            <div className="text-ui04 text-[24px] text-center">
+              {formatWalletBalance(balance)}
+            </div>
+          </div>
+        
+
+          <div>
+            {/* Session 1 earning: 50,000 */}
+          </div>
         </div>
       </div>
 
       <div className="flex gap-4 px-5">
         <Button
           isBlock
+          disabled={isLoadingFud || pointBalance < 50}
           onClick={onClaim}>
-          Claim
+          {
+            isLoadingFud 
+            ? <EmptyData isLoading />
+            : 'Claim'
+          }
+          
         </Button>
 
         <Button

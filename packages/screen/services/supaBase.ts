@@ -37,6 +37,22 @@ export const updateRewardPoint = async ({address, point} : {address: string, poi
   }
 }
 
+export const updatePointAfterClaim = async ({address, point} : {address: string, point: number}) => {
+  try {
+    const { data: currentItem } = await supabase.from('reward').select().eq('address', address)
+    console.log('currentAddress', currentItem)
+    const { data, error } = await supabase
+      .from('reward')
+      .update({ point: currentItem[0].point - point })
+      .eq('address', address).select()
+    console.log('data', data)
+    return data
+  } catch (e) {
+    console.log('err', e)
+    return null
+  }
+}
+
 
 export const fetchRewardData = async () => {
   try{

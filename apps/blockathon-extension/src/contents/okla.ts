@@ -8,7 +8,7 @@ const handleScroll = () => {
   } else {
     scrollBefore = scrolled
     // console.log("ScrollDOWN");
-    let point = 10000
+    let point = 10
     if (scrolled > heightInit) {
       point = 10
     }

@@ -19,12 +19,13 @@ export const EmptyData: FC<IEmptyData> = ({
   return (
     <div className="empty-data w-full h-full height-ignore-footer all-center flex-col">
       {isLoading ? (
-        <img
-          className={cx('block h-12 w-12 animate-bounce', {})}
-          src={`/public/img/brand/${
-            isDarkTheme ? 'logo-dark' : 'logo-light'
-          }.svg`}
-        />
+        // <img
+        //   className={cx('block h-12 w-12 animate-bounce', {})}
+        //   src={`/public/img/brand/${
+        //     isDarkTheme ? 'logo-dark' : 'logo-light'
+        //   }.svg`}
+        // ></img>
+        <div className='block animate-bounce text-ui04'>...</div>
       ) : (
         <>
           {/* <div className="empty-data__image image-not-found">
