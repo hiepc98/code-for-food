@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# Viction Extension Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- This repository is using pnpm [Workspace](https://pnpm.io/workspaces) & [TurboRepo](https://turbo.build/).
+- Plasmo, tailwind, redux.
 
-## Available Scripts
+## Structuring:
 
-In the project directory, you can run:
+- **apps/\***: storing our application
+- **packages/\***: holding packages that use in project
 
-### `yarn start`
+## Convention
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Limit** to use library
+- Naming wallet packages with: @wallet/ prefix (E.g: @wallet/aptos)
+- Eslint [standard](https://www.npmjs.com/package/eslint-config-standard)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Command
 
-### `yarn test`
+Add new packages
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+pnpm add <package> <package> --filter <Project Name>
+```
 
-### `yarn build`
+Run Project inside workspace.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+pnpm run <Command> --filter <Project Name>
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+For example:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+pnpm run dev --filter @wallet/aptos
+```
 
-### `yarn eject`
+For parallel: this command will run all the project that have `dev` script in `package.json`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+pnpm run dev
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<!--
+@wallet/_name
+//Eg: @coin98-wallet/near
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+//constants, interface
+@wallet/types
+@wallet/services
+// List engines, how to use.
+@wallet/engine -> routing service
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ -->

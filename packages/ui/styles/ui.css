@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html{
+    --brown: #bd8521;
+    --gray_lottery: rgba(250,250,250,0.8);
+    --gray_switch: #303030;
+  
+    --back_drop: rgba(0,0,0,0.5);
+  
+    --gray_dropdown: #303030;
+  
+    --text: #fafafa;
+  
+    --chart: #303030;
+    --gray_border: #454545;
+    --gray_border2: #454545;
+  
+    --gray05: #151515;
+    --gray1: #202020;
+    --gray15: #252525;
+    --gray25: #353535;
+    --gray2: #303030;
+    --gray21: #303030;
+    --gray3: #454545;
+    --gray4: #606060;
+    --gray5: #bbbbbb;
+    --gray6: #777777;
+    --gray7: #606060;
+    --gray8: #292929;
+  
+    --yellow: #cda349;
+    --yellow_nft: #4b4725;
+    --yellow2: #fbcc34;
+    --green: #4d916e;
+    --green1: #b3e4d5;
+    --red: #c85250;
+    --pink: #fdb6ba;
+    --white2: #fafafa;
+    --white: #fafafa;
+  
+    --pinky: #6240bb;
+}
+
+/* Prepare for lightmode */
+html.light{
+    --brown: #bd8521;
+    --gray_lottery: rgba(250,250,250,0.8);
+    --gray_switch: #303030;
+  
+    --back_drop: rgba(0,0,0,0.5);
+  
+    --gray_dropdown: #303030;
+  
+    --text: #fafafa;
+  
+    --chart: #303030;
+    --gray_border: #454545;
+    --gray_border2: #454545;
+  
+    --gray05: #151515;
+    --gray1: #202020;
+    --gray15: #252525;
+    --gray25: #353535;
+    --gray2: #303030;
+    --gray21: #303030;
+    --gray3: #454545;
+    --gray4: #606060;
+    --gray5: #bbbbbb;
+    --gray6: #777777;
+    --gray7: #606060;
+    --gray8: #292929;
+  
+    --yellow: #cda349;
+    --yellow_nft: #4b4725;
+    --yellow2: #fbcc34;
+    --green: #4d916e;
+    --green1: #b3e4d5;
+    --red: #c85250;
+    --pink: #fdb6ba;
+    --white2: #fafafa;
+    --white: #fafafa;
+  
+    --pinky: #6240bb;
+}
+
+

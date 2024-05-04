@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "declaration": false,
+    "declarationMap": false,
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "paths": {
+      "@ui": ["./index.tsx"],
+      "@components/*": ["./components/*"],
+    },
+  },
+  "extends": "tsconfig/react-library.json",
+  "include": ["./**/*.ts", "./**/*.tsx"],
+  "exclude": ["dist", "build", "node_modules"]
+}

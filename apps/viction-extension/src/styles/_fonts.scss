@@ -1,0 +1,74 @@
+@import './icons';
+
+// @font-face {
+//   font-family: 'Inter';
+//   font-weight: 300;
+//   src: url('../../public/fonts/Inter-Light.ttf') format('truetype');
+// }
+
+// @font-face {
+//   font-family: 'Inter';
+//   font-weight: 400;
+//   src: url('../../public/fonts/Inter-Regular.ttf') format('truetype');
+// }
+
+// @font-face {
+//   font-family: 'Inter';
+//   font-weight: 500;
+//   src: url('../../public/fonts/Inter-Medium.ttf') format('truetype');
+// }
+
+// @font-face {
+//   font-family: 'Inter';
+//   font-weight: 600;
+//   src: url('../../public/fonts/Inter-SemiBold.ttf') format('truetype');
+// }
+
+// @font-face {
+//   font-family: 'Inter';
+//   font-weight: 700;
+//   src: url('../../public/fonts/Inter-Bold.ttf') format('truetype');
+// }
+
+@font-face {
+  font-family: 'SchibstedGrotesk';
+  font-weight: 400;
+  src: url('../../public/fonts/SchibstedGrotesk-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'SchibstedGrotesk';
+  font-weight: 500;
+  src: url('../../public/fonts/SchibstedGrotesk-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'SchibstedGrotesk';
+  font-weight: 600;
+  src: url('../../public/fonts/SchibstedGrotesk-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'SchibstedGrotesk';
+  font-weight: 700;
+  src: url('../../public/fonts/SchibstedGrotesk-Bold.ttf') format('truetype');
+}
+
+// @font-face {
+//   font-family: text-security-disc;
+//   src: url('https://raw.githubusercontent.com/noppa/text-security/master/dist/text-security-disc.woff');
+// }
+
+html,
+body {
+  font-family: 'SchibstedGrotesk', sans-serif;
+}
+
+
+.icon {
+  font-size: 2rem;
+}
+
+.icon-small {
+  font-size: 1.25rem;
+}

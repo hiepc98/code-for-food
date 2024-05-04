@@ -1,0 +1,52 @@
+{
+  "dev@gmail.com": [
+    {
+      "name": "dev@gmail.com",
+      "address": "0xB85EF045Bd53878c74319B073a7f2a697c4FbCEE",
+      "connections": [],
+      "privateKey": "U2FsdGVkX18JZ8Z2zertT95H84ovR+ybRInWsWXm+s2yIkr/F4b7K1PG9RqxVtQhcnM0rhXtw2MaPn0lHSjpv5BSeGQtQBKar7LPOCmEuCYjvdc97fpPzOxwpx5jnFXa",
+      "mnemonic": "U2FsdGVkX111Czi+9QZuUswZXZT+zO2Ve6iS7o6C3rN9IT38y5iyksDYzjpBPXe25vhMctx7d7nTNpmoE000RvVR5+HRXrfz2ouBuHCibAUKeofZccGCNlx4pb9FRHIV",
+      "meta": {
+        "chain": "ether"
+      },
+      "avatar": "google",
+      "uid": "dev@gmail.com"
+    },
+    {
+      "name": "dev@gmail.com",
+      "address": "0xB85EF045Bd53878c74319B073a7f2a697c4FbCEE",
+      "connections": [],
+      "privateKey": "U2FsdGVkX18JZ8Z2zertT95H84ovR+ybRInWsWXm+s2yIkr/F4b7K1PG9RqxVtQhcnM0rhXtw2MaPn0lHSjpv5BSeGQtQBKar7LPOCmEuCYjvdc97fpPzOxwpx5jnFXa",
+      "mnemonic": "U2FsdGVkX111Czi+9QZuUswZXZT+zO2Ve6iS7o6C3rN9IT38y5iyksDYzjpBPXe25vhMctx7d7nTNpmoE000RvVR5+HRXrfz2ouBuHCibAUKeofZccGCNlx4pb9FRHIV",
+      "meta": {
+        "chain": "binanceSmart"
+      },
+      "avatar": "google",
+      "uid": "dev@gmail.com"
+    },
+    {
+      "name": "dev@gmail.com",
+      "address": "0xB85EF045Bd53878c74319B073a7f2a697c4FbCEE",
+      "connections": [],
+      "privateKey": "U2FsdGVkX18JZ8Z2zertT95H84ovR+ybRInWsWXm+s2yIkr/F4b7K1PG9RqxVtQhcnM0rhXtw2MaPn0lHSjpv5BSeGQtQBKar7LPOCmEuCYjvdc97fpPzOxwpx5jnFXa",
+      "mnemonic": "U2FsdGVkX111Czi+9QZuUswZXZT+zO2Ve6iS7o6C3rN9IT38y5iyksDYzjpBPXe25vhMctx7d7nTNpmoE000RvVR5+HRXrfz2ouBuHCibAUKeofZccGCNlx4pb9FRHIV",
+      "meta": {
+        "chain": "matic"
+      },
+      "avatar": "google",
+      "uid": "dev@gmail.com"
+    },
+    {
+      "name": "dev@gmail.com",
+      "address": "0xB85EF045Bd53878c74319B073a7f2a697c4FbCEE",
+      "connections": [],
+      "privateKey": "U2FsdGVkX18JZ8Z2zertT95H84ovR+ybRInWsWXm+s2yIkr/F4b7K1PG9RqxVtQhcnM0rhXtw2MaPn0lHSjpv5BSeGQtQBKar7LPOCmEuCYjvdc97fpPzOxwpx5jnFXa",
+      "mnemonic": "U2FsdGVkX111Czi+9QZuUswZXZT+zO2Ve6iS7o6C3rN9IT38y5iyksDYzjpBPXe25vhMctx7d7nTNpmoE000RvVR5+HRXrfz2ouBuHCibAUKeofZccGCNlx4pb9FRHIV",
+      "meta": {
+        "chain": "tomo"
+      },
+      "avatar": "google",
+      "uid": "dev@gmail.com"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+diff --git a/src/chains/chainDatas.ts b/src/chains/chainDatas.ts
+index 09d7796e6200d721ed505e06333d60d1a75fc6d6..7b70a98dab156f061c21529637e4958b369814e9 100644
+--- a/src/chains/chainDatas.ts
++++ b/src/chains/chainDatas.ts
+@@ -990,7 +990,7 @@ export const CHAIN_DATA: Record<string, Chain> = {
+     symbol: 'VIC',
+     chain: CHAIN_TYPE.tomo,
+     tokenStandard: 'VIC VRC25',
+-    rpcURL: 'https://rpc.tomochain.com',
++    rpcURL: 'https://rpc.viction.xyz',
+     scan: 'https://www.vicscan.xyz'
+   },
+   algorand: {

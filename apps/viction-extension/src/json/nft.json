@@ -1,0 +1,65 @@
+[
+  {
+    "address": "sei1mlppg5sm505jvv0h7kwwlgrannafy7vupupkv0587k05s039s6msulf9ez",
+    "chain": "sei",
+    "id": "8",
+    "name": "Ronald Collection 25",
+    "image": "http://localhost:3005/create/collection/8",
+    "description": "siuuuuuuuu",
+    "contractName": "JOJO 7"
+  },
+  {
+    "address": "sei19ztnq27fef4fzvg45pypnm0mafjzv3kchk8gftmw2mkcwgxqk0xqxxarp9",
+    "chain": "sei",
+    "id": "1",
+    "name": "",
+    "image": "",
+    "description": "",
+    "contractName": "SEI Launchpad 10"
+  },
+  {
+    "address": "sei186gtdqymtxuah0n5d0na69zret55zqwvnw0f7xxgq2fhk742lknquhggf8",
+    "chain": "sei",
+    "id": "4",
+    "name": "",
+    "image": "",
+    "description": "",
+    "contractName": "Richard Keller"
+  },
+  {
+    "address": "sei1la5hwcmqc66y2kd8vwvz2lv6rwsvkh59mwqhd58xc2cnk7r4r60q4pl50d",
+    "chain": "sei",
+    "id": "C984LfPEWBLJlEU3wuj",
+    "name": "sad",
+    "image": "https://inventory.coin98.com/images/claim your brasileirão assaí nft!-6GzhwVBbVYDnR2jb.jpg",
+    "description": "aeg",
+    "contractName": "Mint By Users"
+  },
+  {
+    "address": "sei1la5hwcmqc66y2kd8vwvz2lv6rwsvkh59mwqhd58xc2cnk7r4r60q4pl50d",
+    "chain": "sei",
+    "id": "C98juhjWsojbmz5WZpA",
+    "name": "12121",
+    "image": "https://inventory.coin98.com/images/claim your brasileirão assaí nft!-I8Ghtinvckt8iWPj.jpg",
+    "description": "12212",
+    "contractName": "Mint By Users"
+  },
+  {
+    "address": "sei1la5hwcmqc66y2kd8vwvz2lv6rwsvkh59mwqhd58xc2cnk7r4r60q4pl50d",
+    "chain": "sei",
+    "id": "C98kT28PTE3zPHj1YtK",
+    "name": "test token",
+    "image": "https://inventory.coin98.com/images/image-20230529-045321-RYt3g4Fh4MMjc6MO.jpg",
+    "description": "sadasd",
+    "contractName": "Mint By Users"
+  },
+  {
+    "address": "sei1la5hwcmqc66y2kd8vwvz2lv6rwsvkh59mwqhd58xc2cnk7r4r60q4pl50d",
+    "chain": "sei",
+    "id": "C98uB4NGmS5IcL6TUHz",
+    "name": "aa",
+    "image": "https://inventory.coin98.com/images/empty-wallet-WpaxKpW41wOpjapV.jpg",
+    "description": "aa",
+    "contractName": "Mint By Users"
+  }
+]
