@@ -6,8 +6,9 @@ import { formatNumberBro, truncate } from "@wallet/utils"
 import { Button, Icon, Image, Touch } from '@wallet/ui'
 import useClipboard from "../../hooks/useClipboard"
 import { useTranslation } from "react-i18next"
-import { fetchRewardData } from "../../services/supaBase"
-import { useEffect } from "react"
+import supabase from "../../services/supaBase"
+import { useEffect, useState } from "react"
+import NumCountUp from '../Countup'
 
 const MainScreen = () => {
   const { navigateScreen } = useRouting()
@@ -15,6 +16,9 @@ const MainScreen = () => {
   const activeWallet = useAppSelector((state) => state.wallet.activeWallet)
   const { t } = useTranslation()
   const { onCopyWithTitle } = useClipboard({ t })
+
+  const [pointBalance, setPointBalance] = useState(0)
+  const [isLoading, setIsLoading] = useState(false)
 
   const formatWalletBalance = (balance: number | string) => {
     let val = Number(balance)
@@ -24,7 +28,9 @@ const MainScreen = () => {
     if (val < 10) {
       return formatNumberBro(val, 2)
     }
-    return formatNumberBro(val, 1)
+    if (isLoading) return formatNumberBro(val, 2)
+    // return formatNumberBro(val, 1)
+    return <NumCountUp endNum={Number(val)} duration={1} decimals={2}/>
   }
 
   const address = activeWallet.address
@@ -43,8 +49,13 @@ const MainScreen = () => {
   }, [])
 
   const init = async () => {
-    const res = await fetchRewardData()
-    console.log({ res });
+    setIsLoading(true)
+    const { data, error } = await supabase.from('reward').select().eq('address', activeWallet.address)
+    if(data){
+      setPointBalance(data[0].point)
+      setIsLoading(false)
+    }
+    setIsLoading(false)
   }
 
 
@@ -52,8 +63,8 @@ const MainScreen = () => {
 
   }
 
-  const onConnect = () => {
-
+  const onRefresh = () => {
+    init()
   }
 
   return (
@@ -83,21 +94,25 @@ const MainScreen = () => {
       <div className="w-full flex justify-center items-center h-[60%]">
 
         <div>
+          <div className="mb-2 text-center text-ui04 flex items-center justify-center">
+            <p className="mr-2">Points</p>
+            <Icon className="cursor-pointer text-[24px]" name="refresh" onClick={onRefresh}/>
+          </div>
           <div className="text-ui04 text-h2 text-center mb-6" style={{ fontSize: '40px' }}>
-            {formatWalletBalance(98000)}
+            {formatWalletBalance(pointBalance)}
           </div>
 
-          <div>
+          {/* <div>
             Session 1 earning: 50,000
-          </div>
+          </div> */}
         </div>
       </div>
 
       <div className="flex gap-4 px-5">
         <Button
           isBlock
-          onClick={onConnect}>
-          Connect
+          onClick={onRefresh}>
+          Refresh
         </Button>
 
         <Button
