@@ -1,9 +1,10 @@
 import { Button, Icon, Input } from '@wallet/ui'
-import { cx } from '@wallet/utils'
+import cn from 'classnames'
 import React, { type FC, useState } from 'react'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useHistory, useLocation } from 'react-router-dom'
+import get from 'lodash/get'
 
 import useTheme from '../../../../hooks/useTheme'
 // import { encryptService } from '~controllers/services/encryption'
@@ -16,6 +17,7 @@ import {
 
 import { resetAllReduxStore } from '../../utils'
 import withI18nProvider from '../../../../provider'
+import { encryptService } from '../../../../services'
 
 interface UnlockForm {
   password: string
@@ -30,12 +32,11 @@ interface LocationState {
 }
 
 interface Props {
-  encryptService?: any
   isModal?: boolean
   cb?: () => any
 }
 
-const UnlockScreen: FC<Props> = ({ isModal, cb, encryptService }) => {
+const UnlockScreen: FC<Props> = ({ isModal, cb }) => {
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
   const history = useHistory()
@@ -107,7 +108,7 @@ const UnlockScreen: FC<Props> = ({ isModal, cb, encryptService }) => {
     window.openModal({
       type: 'warning',
       title: t('unlock_app.sign_out_wallet'),
-      content: t('unlock_app.for_your_wallet'),
+      content: t('unlock_app.warning_for_3_times'),
       btnType: 'transparent',
       okText: t('unlock_app.i_understand')
     })
@@ -132,9 +133,14 @@ const UnlockScreen: FC<Props> = ({ isModal, cb, encryptService }) => {
 
     window.openModal({
       type: 'warning',
+      iconType: 'danger',
       title: t('unlock_app.wallet_signed'),
-      content: t('unlock_app.for_your_wallet'),
+      content: t('unlock_app.warning_for_10_times'),
       btnType: 'transparent',
+      backdrop: true,
+      displayType: 'compact',
+      disableClickOutside: true,
+      customBackdropColor: 'bg-bg-bot',
       okText: t('unlock_app.back_to'),
       onCancel: onSignOut,
       onOk: onSignOut
@@ -151,20 +157,20 @@ const UnlockScreen: FC<Props> = ({ isModal, cb, encryptService }) => {
         onSubmit={handleSubmit(onUnlockWallet)}>
         <div className="all-center mt-auto mb-6">
           {isModal ? (
-            <Icon name="lock_on" className="text-primary text-[56px]" />
+            <Icon name="lock_on" className="text-sem-success text-[56px]" />
           ) : (
             <img
-              className={cx('block h-12 w-12', {})}
+              className={cn('block h-20 w-20', {})}
               src={`/public/img/brand/${
                 isDarkTheme ? 'logo-dark' : 'logo-light'
               }.svg`}
             />
           )}
         </div>
-        <div className="text-center text-h3 text-bg-mid mb-10">
+        <div className="text-center text-h3 text-ui04 mb-10">
           {isModal
             ? t('unlock_screen.password_required')
-            : t('unlock_screen.welcome_to_viction')}
+            : t('unlock_screen.welcome_to_wallet', { wallet: process.env.PLASMO_EXT_WALLET_NAME || 'Ninji' })}
         </div>
         <Input
           isAnim
@@ -177,7 +183,7 @@ const UnlockScreen: FC<Props> = ({ isModal, cb, encryptService }) => {
           })}
           caption={
             <span
-              className="text-red"
+              className="text-sem-danger"
               dangerouslySetInnerHTML={{ __html: errorMsg }}
             />
           }

@@ -66,7 +66,7 @@ const Wizard: FC<WizardProps> = ({ children, ...props }) => {
 
     switch (currentStep) {
       case 0:
-        return t('change_profile_screen.create_wallet')
+        return 'Import wallet'
       case 1:
         return t('change_profile_screen.backup_passphrase')
       case 2:

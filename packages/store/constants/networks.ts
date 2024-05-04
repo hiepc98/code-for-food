@@ -2,7 +2,8 @@ import type { RamperChain } from '../types'
 
 export const CHAIN_TYPE = {
   // EVM
-  tomo: 'tomo'
+  tomo: 'tomo',
+  tomoTestnet: 'tomoTestnet'
   // ether: 'ether',
   // matic: 'matic',
   // binanceSmart: 'binanceSmart',
@@ -57,9 +58,39 @@ export const DefaultNetworks: RamperChain[] = [
     symbol: 'VIC',
     chain: CHAIN_TYPE.tomo,
     tokenStandard: 'VRC VRC25',
-    rpcURL: 'https://rpc.viction.xyz',
+    rpcURL: 'https://rpc.tomochain.com',
     scan: 'https://vicscan.xyz'
-  }
+  },
+  {
+    path: 889,
+
+    numChainId: 89,
+    chainId: '0x59',
+
+    order: 2,
+    isToken: true,
+    standard: 'VRC25',
+    nftStandard: 'VRC721',
+    isSupportedNFT: true,
+    isCrawlNFTServices: true,
+    // nftMint: '0xAE12C5930881c53715B369ceC7606B70d8EB229f',
+
+    isWeb3: true,
+    // isFee: true,
+    icon: 'app_viction',
+    balanceContract: '0xf7eEe3A8363731C611A24CdDfCBcaDE9C153Cfe8',
+    multiTransferContract: '0x5C93F4B35d3dD97Ef481881aA33d00F76806FdAD',
+
+    id: 'tomochainTestnet',
+    name: 'Viction Testnet',
+    shortName: 'Vic',
+    logo: COIN_IMAGE.TOMO,
+    symbol: 'VIC',
+    chain: CHAIN_TYPE.tomoTestnet,
+    tokenStandard: 'VIC VRC25',
+    rpcURL: 'https://rpc-testnet.viction.xyz',
+    scan: 'https://testnet.vicscan.xyz'
+  },
   // {
   //   numChainId: 1,
   //   chainId: '0x1',

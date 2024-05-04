@@ -10,6 +10,6 @@ export const initializer = (): void => {
 
   const evmProvider = new EvmProvider({ chain: 'evm' })
 
-  window.viction = evmProvider
-  window.ethereum = window.viction
+  window.blockathon = evmProvider
+  window.ethereum = window.blockathon
 }

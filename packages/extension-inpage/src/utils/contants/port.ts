@@ -1,10 +1,4 @@
-export const PORT = {
-  ninji: 'Ninji',
-  viction: 'Viction',
-  fin: 'Fin'
-}
-
-export const PORT_NAME = PORT.viction
+export const PORT_NAME = 'Blockathon'
 
 export const PORT_BACKGROUND = `${PORT_NAME}:BackgroundScript`
 export const PORT_CONTENT = `${PORT_NAME}:ContentScript`

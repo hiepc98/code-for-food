@@ -1,4 +1,5 @@
 {
+  "multiple_window_detect_description": "Please close another window before continuing!",
   "send_to_token": {
     "memo_optional": "Memo (optional)",
     "clear_all": "Clear All",
@@ -88,7 +89,7 @@
     "coming_soon": "Coming soon"
   },
   "unlock_screen": {
-    "welcome_to_viction": "Welcome to Viction Wallet!",
+    "welcome_to_blockathon": "Welcome to Blockathon Wallet!",
     "password": "Password",
     "password_required": "Password Required",
     "new_password": "New password"
@@ -109,7 +110,7 @@
     "and": "and",
     "create_password": "Create Password",
     "privacy_policy": "Privacy Policy",
-    "i_read_tomo_wallet": "I have read, understood, and agree to abide by Viction Wallet's"
+    "i_read_wallet": "I have read, understood, and agree to abide by Blockathon Wallet's"
   },
   "token_detail_screen": {
     "confirm_password": "Confirm password",
@@ -500,5 +501,6 @@
     "fund_withdraw": "You currently have {{funds}} funds available for withdrawal.",
     "min_amount_stake": "Vote amount must greater than {{amount}} VIC",
     "insufficient_fund": "Insufficient funds for unvote"
-  }
+  },
+  "multiple_window_detect": "Multiple Window Detect"
 }

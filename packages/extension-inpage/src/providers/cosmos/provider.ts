@@ -6,7 +6,7 @@ import { decode, encode } from "../../utils/crypto";
 import { uniqueId } from "../../utils";
 
 export class RamperProvider extends SafeEvent {
-    name: string = 'Viction Wallet'
+    name: string = 'Blockathon Wallet'
     version: string = '0.0.1'
 
     constructor() {

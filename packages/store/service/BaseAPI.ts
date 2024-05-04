@@ -4,12 +4,20 @@ import axios, { type AxiosRequestConfig, type AxiosResponse } from 'axios'
 import crypto from 'crypto-js'
 import has from 'lodash/has'
 import QueryString from 'query-string'
+import get from 'lodash/get'
 
 import { store, onUpdateToken } from '../index'
+import { CHAIN_TYPE } from '../constants'
 
 const DEFAULT_TIMEOUT = 120000
-const SOURCE = 'C98VICSGWLS'
+const SOURCE = process.env.PLASMO_PUBLIC_SOURCE || 'C98VICSGWLS'
+
 // eslint-disable-next-line no-undef
+
+export const WALLET_TYPE = {
+  hot: 'hot',
+  hybrid: 'hybrid',
+}
 
 export const BaseAPI = axios.create({
   baseURL: process.env.PLASMO_PUBLIC_API,
@@ -82,6 +90,40 @@ export const InfoServiceAPI = axios.create({
   timeout: DEFAULT_TIMEOUT,
   adapter
 })
+
+export const BaseMessage = axios.create({
+  baseURL: 'https://api-push.coin98.com/',
+  timeout: DEFAULT_TIMEOUT,
+  adapter,
+})
+
+BaseMessage.register = async ({deviceId, wallets, multichain, encrypted, hardwareWallet, kind, social, name, isCreate}) => {
+  const isWatchOnly = false
+
+  if (!isWatchOnly) {
+    BaseMessage.post('address/register', {
+      device: deviceId,
+      wallets: wallets
+        .filter((wl: any) => typeof get(wl, 'meta.chain') === 'string')
+        .map((wl: any) => {
+          return {
+            address: get(wl, 'address'),
+            chain: get(wl, 'meta.chain', CHAIN_TYPE.tomo)
+          }
+        }),
+      information: {
+        kind,
+        social,
+        encrypted,
+        multichain,
+        hardwareWallet,
+        name,
+        isCreate
+      }
+    })
+  }
+}
+
 
 const URLS_RETURN_DATA = [
   // 'smartRouter/calculator',

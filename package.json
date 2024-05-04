@@ -10,8 +10,8 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel --no-cache",
-    "dev:ext": "pnpm run dev --filter ramper-extension",
-    "build:ext": "pnpm run build --filter ramper-extension --force",
+    "dev:ext": "pnpm run dev --filter blockathon-extension",
+    "build:ext": "pnpm run build --filter blockathon-extension --force",
     "build:inpage": "pnpm run build --filter @wallet/extension-inpage --force",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
@@ -24,7 +24,6 @@
     "@changesets/cli": "^2.26.1",
     "@commitlint/cli": "^17.4.4",
     "@commitlint/config-conventional": "^17.4.4",
-    "eslint-config-custom": "workspace:*",
     "husky": "^8.0.0",
     "prettier": "latest",
     "turbo": "^1.7.1"
@@ -37,11 +36,5 @@
     "@lmdb/lmdb-darwin-arm64": "2.6.0-alpha6",
     "@lmdb/lmdb-darwin-x64": "2.6.0-alpha6"
   },
-  "packageManager": "pnpm@7.9.3",
-  "pnpm": {
-    "patchedDependencies": {
-      "@wallet/constants@3.0.4": "patches/@wallet__constants@3.0.4.patch",
-      "@wallet/utils@3.0.5": "patches/@wallet__utils@3.0.5.patch"
-    }
-  }
+  "packageManager": "pnpm@7.9.3"
 }

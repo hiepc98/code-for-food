@@ -11,7 +11,7 @@ import { useAppSelector } from 'store'
 const StepRestore = () => {
   const { t } = useTranslation()
   const { state, onChangeInputState, onRestore, onChangeIsOldWalletStandard } = useCreateWalletContext()
-  const services = window.walletServices.engines[0]
+  const services = window.walletServices && window.walletServices.engines[0]
   const { privateKeyOrPassphrase, isOldStandard } = state
   const [isValidMnemonic, setIsValidMnemonic] = useState<boolean>(true)
 
@@ -96,15 +96,15 @@ const StepRestore = () => {
 
   return (
     <>
-      <div className="my-6 text-ui04">{t('step_restore.pls_enter_passphrase_or_pk')}</div>
+      <div className="my-6 text-ui04">Enter your passphrase string here: </div>
 
       <Input
         textarea
         rows={3}
         isAllowClear
         isPastable
-        label={t('step_restore.passphrase_pk')}
-        placeholder={'cake pizza cat...'}
+        label={'Passphrase'}
+        placeholder={'hairy cat...'}
         value={privateKeyOrPassphrase}
         onChange={(e: React.ChangeEvent<HTMLInputElement> | any) => {
           if (e.nativeEvent?.inputType === 'insertLineBreak') {
@@ -117,31 +117,6 @@ const StepRestore = () => {
           isKeyError ? t('step_restore.invalid_passphrase_or_pk') : undefined
         }
       />
-
-      {/* <div className="flex items-center mb-6">
-          <Checkbox checked={isOldStandard} onChangeValue={() => onChangeIsOldWalletStandard?.(true)}>
-            <div className="ml-3 text-ui04">
-              {t('step_inform.old_standard')}
-            </div>
-          </Checkbox>
-       </div> */}
-
-      {
-        isShowWalletStandard &&
-        <RadioSelection
-          items={listStandard}
-          onChange={handleChangeStandard}
-          defaultValue={listStandard[1]}
-          renderMethod={(item) => (
-            <div className='flex gap-4'>
-              <p className='text-[12px] font-semibold text-ui04'>{item.title}</p>
-              <p className='text-[12px] text-tx-secondary'>{item.description}</p>
-            </div>
-          )}
-        />
-      }
-
-      
 
 
       <div className="mt-auto">

@@ -312,6 +312,10 @@ export const walletSlice = createSlice({
         }
         return currentWallet
       })
+    },
+    onSetWallets: (state, action: PayloadAction<any>) => {
+      const { payload } = action
+      state.wallets = payload
     }
   }
 })
@@ -341,7 +345,8 @@ export const {
   onUpdateTokenList,
   onResetTokenList,
   onUpdateWalletsByUser,
-  updateTokenHiddenByUser
+  updateTokenHiddenByUser,
+  onSetWallets
 } = walletSlice.actions
 
 export default walletSlice.reducer

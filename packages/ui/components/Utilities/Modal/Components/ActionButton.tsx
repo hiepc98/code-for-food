@@ -1,8 +1,7 @@
-import React, { useMemo, useState, PropsWithChildren } from 'react'
 import type { FC } from 'react'
+import React, { useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Button, ButtonType } from '../../../Button/Button.component'
-import LoadingCircle from '../../../../../screen/components/shared/LoadingCircle'
 
 interface IActionButton {
     type: 'error' | 'success' | 'confirm' | 'warning' | 'icon' | 'none'
@@ -63,9 +62,7 @@ const ModalButton = ({ size = 'default', type, onClick, className, children, isL
     onClick={onClick}
   >
     {isLoading ? (
-        <LoadingCircle
-          height='32px'
-          width='32px'
+        <div
         />
       ) : (
         children
@@ -88,7 +85,7 @@ const ActionButton: FC<IActionButton> = ({ type, btnType, okText, cancelText, on
       onOk && await onOk()
       setIsLoading(false)
     }
-    window.closeModal()
+    // window.closeModal()
   }
 
   const btnColor = useMemo(() => {

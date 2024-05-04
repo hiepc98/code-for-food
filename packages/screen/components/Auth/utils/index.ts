@@ -6,14 +6,6 @@ import {
   store
 } from 'store'
 
-export const extract2D = function extract2d(array, x1, y1, x2, y2) {
-  const result = []
-  for (let y = y1; y <= y2; y++) {
-    result.push(array[y].slice(x1, x2))
-  }
-  return result
-}
-
 export const resetAllReduxStore = () => {
   const arrFunc = [
     resetIntegrationSlice,
@@ -22,7 +14,7 @@ export const resetAllReduxStore = () => {
     resetUserSlice,
     resetWalletSlice
   ]
-  arrFunc.forEach((func) => {
+  arrFunc.forEach((func :any) => {
     store.dispatch(func())
   })
 }

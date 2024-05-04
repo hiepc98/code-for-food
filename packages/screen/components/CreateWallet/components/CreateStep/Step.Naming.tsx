@@ -88,7 +88,7 @@ const StepNaming = () => {
           setNameInput(e.target.value)
         }}
       />
-      <div className="mt-6">
+      {/* <div className="mt-6">
         <p className="font-semibold text-ui04">{t('step.avatar')}</p>
         <div className="grid grid-cols-5 items-center justify-items-center">
           {AvatarsColor?.map((avatar, index) => {
@@ -107,7 +107,7 @@ const StepNaming = () => {
             )
           })}
         </div>
-      </div>
+      </div> */}
 
       <div className="mt-auto">
         <Button

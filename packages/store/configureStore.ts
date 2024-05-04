@@ -22,7 +22,7 @@ import { Storage } from '@plasmohq/storage'
 
 import rootReducer from './reducers'
 
-const persistConfig = {
+export const persistConfig = {
   key: 'production',
   version: 1,
   storage: localStorage,

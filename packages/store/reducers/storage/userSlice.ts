@@ -1,93 +1,103 @@
-import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
 
-import type { PasswordType } from '../../types'
+import type { PasswordType } from "../../types";
 
 export enum NetworkType {
-  Mainnet = 'Mainnet',
-  Testnet = 'Testnet',
-  Devnet = 'Devnet'
+  Mainnet = "Mainnet",
+  Testnet = "Testnet",
+  Devnet = "Devnet",
 }
 
 export interface ITokenPayload {
-  apiToken?: string
-  adapterToken?: string
-  verifyToken?: string
+  apiToken?: string;
+  adapterToken?: string;
+  verifyToken?: string;
 }
 
 export interface UserState {
   authentication: {
     // Prepare for future matrix password
-    type?: PasswordType
-    password?: string
-    isLock: boolean
+    type?: PasswordType;
+    password?: string;
+    isLock: boolean;
     // Spam Token
-    token?: string
+    token?: string;
     // API Token
-    apiToken?: string
-    adapterToken?: string
-    verifyToken?: string
-    lastActivity?: number
-    connections?: any
-    vault?: string
-  }
-  network: NetworkType
-  deviceId: string
+    apiToken?: string;
+    adapterToken?: string;
+    verifyToken?: string;
+    lastActivity?: number;
+    connections?: any;
+    vault?: string;
+  };
+  network: NetworkType;
+  deviceId: string;
+}
+
+export interface LockState {
+  isLock: boolean;
+  resetRetry?: boolean;
 }
 
 const initialState: UserState = {
   authentication: {
-    type: 'password',
+    type: "password",
     isLock: true,
-    connections: []
+    connections: [],
+    token: '6746673561658773312250030278769981507596', // random to test
   },
   network: NetworkType.Mainnet,
-  deviceId: null as any
-}
+  deviceId: null as any,
+};
 
 export const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState,
   reducers: {
     // Authentication
     onLoginUser: (state, action: PayloadAction<string>) => {
-      state.authentication.token = action.payload
+      state.authentication.token = action.payload;
     },
     onUpdateToken: (state, action: PayloadAction<ITokenPayload>) => {
-      state.authentication.apiToken = action.payload.apiToken
-      state.authentication.adapterToken = action.payload.adapterToken
-      state.authentication.verifyToken = action.payload.verifyToken
+      state.authentication.apiToken = action.payload.apiToken;
+      state.authentication.adapterToken = action.payload.adapterToken;
+      state.authentication.verifyToken = action.payload.verifyToken;
     },
     onUpdateDeviceId: (state, action: PayloadAction<string>) => {
-      state.deviceId = action.payload
+      state.deviceId = action.payload;
     },
     onUpdateAuthentication: (
       state,
       action: PayloadAction<{ type: PasswordType; password: string }>
     ) => {
-      state.authentication.password = action.payload.password
-      state.authentication.type = action.payload.type
-      delete state.authentication.vault
+      state.authentication.password = action.payload.password;
+      state.authentication.type = action.payload.type;
+      delete state.authentication.vault;
     },
-    onChangeLockState: (state, action: PayloadAction<boolean>) => {
-      state.authentication.isLock = action.payload
-      delete state.authentication.vault
+    onChangeLockState: (state, action: PayloadAction<LockState>) => {
+      const { isLock, resetRetry } = action.payload;
+
+      state.authentication.isLock = isLock;
+      if (resetRetry) {
+        delete state.authentication.vault;
+      }
     },
 
     onUpdateVault: (state, action) => {
-      state.authentication.vault = action.payload
+      state.authentication.vault = action.payload;
     },
     onUpdateNetwork: (state, action: PayloadAction<NetworkType>) => {
-      state.network = action.payload
+      state.network = action.payload;
     },
     resetUserSlice: () => {
-      return initialState
+      return initialState;
     },
     onUpdateActivity: (state) => {
-      state.authentication.lastActivity = new Date().getTime()
-    }
-  }
-})
+      state.authentication.lastActivity = new Date().getTime();
+    },
+  },
+});
 
 export const {
   onLoginUser,
@@ -98,10 +108,10 @@ export const {
   onUpdateVault,
   resetUserSlice,
   onUpdateNetwork,
-  onUpdateActivity
+  onUpdateActivity,
   // onUpdateNetworkSelected,
   // onRemoveAccess,
   // onChangeIntegrationNetwork
-} = userSlice.actions
+} = userSlice.actions;
 
-export default userSlice.reducer
+export default userSlice.reducer;

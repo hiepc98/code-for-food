@@ -89,7 +89,7 @@ export const CreateWalletProvider: FC<
 }) => {
   const { isExpand } = useViewport()
   const history = useHistory()
-  const service = window.walletServices.engines[0]
+  const service = window.walletServices && window.walletServices.engines[0]
   // const { state: locationState } = useLocation<{fromSetup: boolean}>()
 
   const dispatch = useAppDispatch()
@@ -212,8 +212,6 @@ export const CreateWalletProvider: FC<
         createdWallet.mnemonic as string
       )
     }
-
-    // console.log({ createdWallet })
 
     dispatch(onImportWallet(createdWallet.toObject() as Wallet))
 

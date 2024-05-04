@@ -1,45 +1,9 @@
-export { default as MainScreenV2 } from './components/MainV2/screens'
+
 export * from './components/StartupScreen'
-
-export * from './components/Token/screens/SendTokenScreen'
-export * from './components/Token/screens/TokenDetailScreen'
-export * from './components/Token/screens/ManageTokenScreen'
-export * from './components/Token/screens/AddCustomToken'
-export * from './components/Token/screens/ReceiveInfoScreen'
-
-export * from './components/NFT/CollectionDetailScreen'
-export * from './components/NFT/NFTDetailScreen'
-export * from './components/NFT/SendNftScreen'
-
-export * from './components/Others/SettingScreen'
-export * from './components/Others/SecurityPrivacyScreen'
-export * from './components/Others/ChangePasswordScreen'
-export * from './components/Others/NetworkScreen'
-export * from './components/Others/CurrencyScreen'
-export * from './components/Others/GeneralScreen'
-export * from './components/Others/LanguageScreen'
-export * from './components/Others/ChooseTheme'
-export * from './components/Others/GetStartedScreen'
-
-export * from './components/CreateWallet/screens/CreateWalletScreen'
-
-export * from './components/Integration/index'
-export * from './components/Integration/screens/ConnectScreen'
-export * from './components/Integration/screens/TransactionScreen'
-export * from './components/Integration/screens/EvmTxScreen'
-export * from './components/Integration/screens/SendTxScreen'
-export * from './components/Integration/screens/NetworkSwitch'
-
-export * from './components/Wallet/BackupScreen'
-export * from './components/Wallet/ChangeProfileScreen'
-export * from './components/Wallet/ConnectionScreen'
-export * from './components/Wallet/HistoryScreen'
-export * from './components/Wallet/MyWalletScreen'
-export * from './components/Wallet/ManageWalletScreen'
-export * from './components/Wallet/BackupScreen'
-
-export * from './components/Auth/screens/PasswordScreen'
-export * from './components/Auth/screens/UnlockScreen'
+export * from './components/Home'
+export * from './components/Points'
 export * from './hooks'
-export * from './types'
 export * from './services'
+export * from './types'
+
+

@@ -12,7 +12,7 @@ export const Row: FC<PushableProps> = (props) => {
   const { title, content, icon, className, ...restProps } = props
   return (
         <div className={cx('flex items-center w-full py-4 cursor-pointer transition-all', className)} {...restProps}>
-            <div className="w-10 h-10 bg-primary text-white all-center mr-3 text-h3">
+            <div className="rounded-full w-10 h-10 bg-primary text-white all-center mr-3 text-h3">
                 <Icon name={icon} className='text-ui00' />
             </div>
 
@@ -27,7 +27,7 @@ export const Row: FC<PushableProps> = (props) => {
             </div>
 
             <div className='h-full all-center ml-auto text-h3'>
-                <Icon name='chevron_right' className='text-ui02'/>
+                <Icon name='arrow_right' className='text-ui02'/>
             </div>
         </div>
   )

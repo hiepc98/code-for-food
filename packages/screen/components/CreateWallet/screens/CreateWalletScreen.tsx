@@ -26,23 +26,28 @@ interface CreateWalletScreenProps {
   // wallets,
 }: CreateWalletScreenProps) => {
   const renderStep = () => {
-    if (type === WalletType.Restore) {
-      return (
-        <Wizard className="h-full flex flex-col">
-          <StepRestore />
-          <StepNaming />
-        </Wizard>
-      )
-    }
+    // console.log('type', type)
+    // if (type === WalletType.Restore) {
+    //   return (
+    //     <Wizard className="h-full flex flex-col">
+    //       <StepRestore />
+    //       <StepNaming />
+    //     </Wizard>
+    //   )
+    // }
 
-    return (
-      <Wizard className="h-full flex flex-col">
-        <StepInform />
-        <StepPassphrase />
-        <StepVerify />
-        <StepNaming />
-      </Wizard>
-    )
+    // return (
+    //   <Wizard className="h-full flex flex-col">
+    //     <StepInform />
+    //     <StepPassphrase />
+    //     <StepVerify />
+    //     <StepNaming />
+    //   </Wizard>
+    // )
+    return <Wizard className="h-full flex flex-col">
+    <StepRestore />
+    <StepNaming />
+  </Wizard>
   }
 
   return (

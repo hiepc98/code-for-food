@@ -376,7 +376,7 @@ export const Input = forwardRef<HTMLInputElement, IInput>((props, ref) => {
     <>
       <div
         className={cx(
-          `w-full block bg-ui01 p-3 mb-2 border-[1px] border-ui02 ${className}`,
+          `w-full block bg-ui01 rounded-xl p-3 mb-2 border-[1px] border-ui02 ${className}`,
           {
             'border-red': status === 'error'
           }

@@ -1,7 +1,7 @@
 // import type { Wallet } from '@wallet/core'
 import { Wallet } from '@wallet/core'
 import { Button, Checkbox, Icon, Input, MainLayout } from '@wallet/ui'
-import { cx } from '@wallet/utils'
+import cn from 'classnames'
 import { useEffect, useMemo } from 'react'
 import {
   type SubmitHandler,
@@ -14,7 +14,7 @@ import { useAppSelector } from 'store'
 import PasswordChangedModal from '../components/PasswordChangedModal'
 import withI18nProvider from '../../../provider'
 import { useTranslation } from 'react-i18next'
-import { TomoWallet } from 'store/types'
+import { encryptService } from '../../../services'
 
 interface SetupForm {
   password: string
@@ -24,14 +24,13 @@ interface SetupForm {
 
 interface PasswordScreenProps {
   type: string
-  wallets: TomoWallet[]
+  wallets: Wallet[]
   isInitialized: boolean
   isSizeExtension: boolean
-  encryptService: any
   onUpdateAuthentication: (data: any) => void
   onUpdateActivity: () => void
   onChangeLockState: (isLock: boolean) => void
-  onMigrateWallet: (wallets: TomoWallet[]) => void
+  onMigrateWallet: (wallets: Wallet[]) => void
 }
 
 const PasswordScreen = ({
@@ -39,7 +38,6 @@ const PasswordScreen = ({
   wallets,
   isInitialized,
   isSizeExtension,
-  encryptService,
   onUpdateAuthentication,
   onUpdateActivity,
   onChangeLockState,
@@ -84,7 +82,7 @@ const PasswordScreen = ({
 
     if (value.length < 8) {
       // @ts-expect-error
-      errorMsg.isLength = t('characterInvalid')
+      errorMsg.isLength = t('password_screen.at_least_8_characters')
     }
 
     return Object.keys(errorMsg).length > 0 ? JSON.stringify(errorMsg) : true
@@ -113,6 +111,7 @@ const PasswordScreen = ({
       usingPassword: false
     })
 
+    console.log('22', isInitialized);
     if (!isInitialized) {
       onUpdateAuthentication({ type: 'password', password })
       onUpdateActivity()
@@ -135,16 +134,16 @@ const PasswordScreen = ({
           })
         : undefined
 
-      return decryptedWallet
+        return decryptedWallet
     })
 
     onUpdateAuthentication({ type: 'password', password })
-    onMigrateWallet(formatWallet as TomoWallet[])
+    onMigrateWallet(formatWallet as Wallet[])
 
     window.openModal({
       type: 'none',
       closable: true,
-      title: t('Password changed'),
+      // title: t('Password changed'),
       content: <PasswordChangedModal t={t} />,
       onCancel: () => {
         history.push('/main')
@@ -153,16 +152,16 @@ const PasswordScreen = ({
   }
 
   const initPassword = watch('password') ?? ''
-  const agreement = watch('agreement')
+  const agreement = true
 
   return (
     <MainLayout
-      title={password ? t('Change Password') : t('Setup Password')}
+      title={password ? t('Change Password') : t('Set Password')}
       className="px-5 pt-3 pb-5"
       headerClass={!isSizeExtension ? 'mt-11' : ''}>
       {!isSizeExtension && (
-        <div className="text-base text-ui04 py-4">
-          {t('get_started.this_password_will')}
+        <div className="body-16-regular text-tx-primary py-4">
+          {'This password is used to protect your wallet to the browser extension'}
         </div>
       )}
 
@@ -181,14 +180,15 @@ const PasswordScreen = ({
             required: true,
             validate: validatePassword
           })}
+          status={errors.password?.message ? 'error' : undefined}
         />
 
-        <ul className="text-tiny text-ui02 mt-2 mb-6">
+        <ul className="body-12-regular text-tx-secondary mt-2 mb-6">
           <li
-            className={cx(
+            className={cn(
               'transition flex items-center',
               initPassword.length > 0 &&
-                (!isValidPassword.isLength ? 'text-green' : 'text-red')
+                (!isValidPassword.isLength ? 'text-sem-success' : 'text-sem-danger')
             )}>
             {initPassword.length > 0 && (
               <Icon
@@ -218,38 +218,16 @@ const PasswordScreen = ({
 
         <div className={!isSizeExtension ? 'mt-12' : 'mt-auto'}>
           <div
-            className={cx(
+            className={cn(
               'flex items-center mb-6',
               !isSizeExtension ? 'block' : 'hidden'
             )}>
-            <Checkbox
-              checked={agreement}
-              onChangeValue={(isChecked) => setValue('agreement', isChecked)}>
-              <div className="ml-3 text-ui04">
-                {t('password_screen.i_read_tomo_wallet')}&nbsp;
-                <a
-                  href="https://docs.viction.xyz/general/how-to-connect-to-viction-network/viction-wallet/term-and-services"
-                  target="_blank"
-                  className="text-blue"
-                  rel="noreferrer">
-                  {t('password_screen.terms_of_service')}
-                </a>
-                &nbsp;{t('password_screen.and')}&nbsp;
-                <a
-                  href="https://docs.viction.xyz/general/how-to-connect-to-viction-network/viction-wallet/privacy-policy"
-                  target="_blank"
-                  className="text-blue"
-                  rel="noreferrer">
-                  {t('password_screen.privacy_policy')}
-                </a>
-              </div>
-            </Checkbox>
           </div>
           <Button
             disabled={!isValid || (!isSizeExtension && !agreement)}
             isBlock>
             {!isSizeExtension
-              ? t('password_screen.create_password')
+              ? 'Next'
               : t('setting_screen.confirm')}
           </Button>
         </div>

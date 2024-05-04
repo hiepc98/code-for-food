@@ -1,4 +1,4 @@
-# Viction Extension Project
+# Code for food
 
 - This repository is using pnpm [Workspace](https://pnpm.io/workspaces) & [TurboRepo](https://turbo.build/).
 - Plasmo, tailwind, redux.
@@ -39,15 +39,3 @@ For parallel: this command will run all the project that have `dev` script in `p
 ```bash
 pnpm run dev
 ```
-
-<!--
-@wallet/_name
-//Eg: @coin98-wallet/near
-
-//constants, interface
-@wallet/types
-@wallet/services
-// List engines, how to use.
-@wallet/engine -> routing service
-
- -->
