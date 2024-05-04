@@ -64,4 +64,5 @@ function injectDappInterface (override?: any) {
   container.removeChild(script)
 }
 
+
 injectDappInterface()

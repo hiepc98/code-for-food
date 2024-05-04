@@ -6,6 +6,8 @@ import { formatNumberBro, truncate } from "@wallet/utils"
 import { Button, Icon, Image, Touch } from '@wallet/ui'
 import useClipboard from "../../hooks/useClipboard"
 import { useTranslation } from "react-i18next"
+import { fetchRewardData } from "../../services/supaBase"
+import { useEffect } from "react"
 
 const MainScreen = () => {
   const { navigateScreen } = useRouting()
@@ -35,6 +37,16 @@ const MainScreen = () => {
       t('main_screen.address')
     )()
   }
+
+  useEffect(() => {
+    init()
+  }, [])
+
+  const init = async () => {
+    const res = await fetchRewardData()
+    console.log({ res });
+  }
+
 
   const onRefFriend = () => {
 
