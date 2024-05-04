@@ -35,7 +35,7 @@ export const initialState: SettingState = {
   language: 'en',
   showBalance: true,
 
-  theme: 'light',
+  theme: 'dark',
 
   notification: true,
   showSmallBalance: true,

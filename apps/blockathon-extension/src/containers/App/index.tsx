@@ -1,5 +1,5 @@
 import { cx } from '@wallet/utils'
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import { Redirect, useLocation } from 'react-router-dom'
 import { ToastContainer, cssTransition } from 'react-toastify'
 import { useAppSelector } from 'store'
@@ -9,6 +9,7 @@ import MenuFooter from '~containers/App/Components/MenuFooter'
 import { WalletProvider } from '~controllers/contexts/WalletContext'
 
 import Routing from './Components/Routing'
+import useTheme from '@wallet/screen/hooks/useTheme'
 
 const zoomEffect = cssTransition({
   enter: 'animate__animated animate__faster animate__fadeInDownBig',
@@ -18,6 +19,7 @@ const zoomEffect = cssTransition({
 const App = () => {
   const hasWallet = useAppSelector((state) => state.wallet.wallets.length > 0)
   const { pathname } = useLocation()
+  const {handleSetTheme} = useTheme()
 
   const IndexRoutes = useMemo(() => {
     if (!hasWallet) {
@@ -25,6 +27,11 @@ const App = () => {
     }
     return <Redirect to="/home" />
   }, [hasWallet])
+
+  useEffect(() => {
+    handleSetTheme('dark')
+  }, [])
+  
 
   const isShowMenuFooter = useMemo(() => {
     return !pathname.includes('startup')

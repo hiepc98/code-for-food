@@ -12,11 +12,14 @@ import 'i18n'
 import 'animate.css/animate.min.css'
 import 'react-toastify/dist/ReactToastify.min.css'
 import '../styles/global.scss'
+import loadable from '@loadable/component'
 
-import ErrorFallback from '@wallet/ui/components/Utilities/ErrorFallback'
+// import ErrorFallback from '@wallet/ui/components/Utilities/ErrorFallback'
 import { ErrorBoundary } from 'react-error-boundary'
 
-import App from '~containers/App'
+// import App from '~containers/App'
+import SplashScreen from '~shared/components/Splash'
+import ErrorFallback from '@wallet/ui/components/Utilities/ErrorFallback'
 
 // Client
 const queryClient = new QueryClient({
@@ -31,19 +34,32 @@ const queryClient = new QueryClient({
 const FORCE_ACTIVE = 'FORCE_ALIVE'
 const FORCE_ACTIVE_INTERVAL = 1000
 
+// const ErrorFallback = loadable(() => import('@wallet/ui/components/Utilities/ErrorFallback'))
+const App = loadable(() => import('~containers/App'))
+
 const Popup = () => {
+  const handleLoadBackground = () => {
+    const element = document.getElementById('loadable-background')
+    setTimeout(() => {
+      element.classList.add('fade-enter')
+      element.remove()
+    }, 300)
+  }
+
   useEffect(() => {
     setInterval(() => {
       // Keep background services alive
       // eslint-disable-next-line no-undef
       chrome.runtime.sendMessage({ name: FORCE_ACTIVE })
     }, FORCE_ACTIVE_INTERVAL)
+
+    handleLoadBackground()
   }, [])
 
   return (
     <Provider store={store}>
       <PersistGate
-        loading={<></>}
+        loading={<SplashScreen isFullScreen />}
         persistor={persistor}>
         <QueryClientProvider client={queryClient}>
           <ErrorBoundary

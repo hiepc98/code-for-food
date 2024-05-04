@@ -39,9 +39,9 @@ const MenuFooter = () => {
   const activeLink = (path: string) => location.pathname === path
   const menuListByNetwork = menuList
 
-  if (!services || !services.isServiceLoaded) {
-    return 
-  }
+  // if (!services || !services.isServiceLoaded) {
+  //   return 
+  // }
 
   return (
     <div

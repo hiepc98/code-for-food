@@ -31,7 +31,7 @@ const StartupScreen = () => {
 
       <div className="relative z-10">
         <h2 className="text-h2 font-medium text-ui04 text-center">
-          Welcome to Earn app
+          Welcome to Code4Fud
         </h2>
 
         <div className="navigation-list mt-6">
@@ -44,7 +44,7 @@ const StartupScreen = () => {
           />
           <Row
              className="border px-4 rounded-xl"
-            title={t('type_selection_modal.restore_a_wallet')}
+            title={'Seed phrase/ private key'}
             content={'Import with your Secret Phrase'}
             icon="expand_view"
             onClick={onRouting('restore')}

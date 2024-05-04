@@ -58,17 +58,17 @@ const MainScreen = () => {
 
   return (
     <div className="h-full">
-      <div className="w-full h-24 bg-[#EEF7FF] flex justify-between items-center border-b border-b-ui01 px-5">
-        <div className="text-h3 text-ui04">
-          Blockathon app
-        </div>
-
+      <div className="w-full h-20 flex justify-between items-center border-b border-b-ui01 px-5">
         <div>
           <div className='text-ui04 font-medium text-tiny'>
             {name}
           </div>
 
 
+
+        </div>
+
+        <div className="text-h3 text-ui04">
           <div className="body-14-regular text-ui03 flex items-center gap-[2px]">
             {truncate(address)}
             <Touch

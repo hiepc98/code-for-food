@@ -52,7 +52,7 @@ export const Button: FC<IButton> = ({
 
   // BaseClass
   const cls = cx(
-    'all-center cursor-pointer uppercase border-box cursor-pointer transition outline-none py-3 px-6 text-base leading-6 font-medium transition-all duration-300 hover:brightness-90 hover:drop-shadow-sm active:brightness-80 rounded-xl',
+    'all-center cursor-pointer uppercase border-box cursor-pointer transition outline-none py-3 px-6 text-tiny leading-6 font-medium transition-all duration-300 hover:brightness-90 hover:drop-shadow-sm active:brightness-80 rounded-xl',
     !disabled && variants[type],
     {
       'w-full': isBlock,
