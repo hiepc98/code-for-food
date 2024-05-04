@@ -1,38 +1,40 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
+  "name": "ext-v3",
+  "version": "0.0.1",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^13.0.0",
-    "@testing-library/user-event": "^13.2.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.0"
-  },
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "packages/wallets/*"
+  ],
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel --no-cache",
+    "dev:ext": "pnpm run dev --filter blockathon-extension",
+    "build:ext": "pnpm run build --filter blockathon-extension --force",
+    "build:inpage": "pnpm run build --filter @wallet/extension-inpage --force",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "format:ramper": "prettier --write \"apps/ramper-extension/**/*.{ts,tsx,md}\"",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "b": "pnpm run build --filter @wallet/",
+    "prepare": "husky install"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "devDependencies": {
+    "@changesets/cli": "^2.26.1",
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
+    "husky": "^8.0.0",
+    "prettier": "latest",
+    "turbo": "^1.7.1"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "overrides": {
+    "lmdb": "2.6.0-alpha6",
+    "@lmdb/lmdb-darwin-arm64": "2.6.0-alpha6",
+    "@lmdb/lmdb-darwin-x64": "2.6.0-alpha6"
+  },
+  "packageManager": "pnpm@7.9.3"
 }

@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    --ui04: #141414;
+    --ui03: #666666;
+    --ui02: #adadad;
+    --ui01: #fafafa;
+    --ui00: #ffffff;
+
+    --primary: #00C8B9;
+    --blue: #1273EA;
+    --green: #24CB52;
+    --orange: #FF9B3E;
+    --red: #EB1236;
+    --black: #0A0A0A;
+    --white: #ffffff;
+    --purple: #6400C8;
+    --pink: #C800B4;
+    --red-thin: #EB2F48;
+    --red-bold: #C80000;
+    --orange-bold: #C86C00;
+    --yellow-bold: #E1CF2C;
+    --green-board: #85C800;
+    --green-light: #29CC60;
+    --blue-light: #0098C8;
+
+    --toastify-color-dark: #454545;
+
+
+}
+
+
+html.dark {
+    --ui04: #FFFFFF;
+    --ui03: #A4A4A4;
+    --ui02: #3E3E3E;
+    --ui01: #1F1F1F;
+    --ui00: #141414;
+
+    --blue: #1273EA;
+    --green: #24CB52;
+    --orange: #FF9B3E;
+    --red: #EB1236;
+    --black: #0A0A0A;
+    --white: #ffffff;
+}

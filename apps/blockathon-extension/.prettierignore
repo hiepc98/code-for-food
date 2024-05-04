@@ -1,0 +1,17 @@
+# Ignore build output
+build/
+dist/
+
+# Ignore Node.js modules
+node_modules/
+
+# Ignore Git files and directories
+.git/
+
+# Ignore specific files
+*.log
+*.md
+
+# Ignore specific directories
+coverage/
+public/

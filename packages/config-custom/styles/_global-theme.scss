@@ -1,0 +1,164 @@
+@import './variables';
+@import './brand';
+
+html {
+  --bg-bot: var(--bw-white);
+  --bg-mid: var(--grey-5);
+  --bg-top: var(--grey-95);
+  --bg-dim: #00000066;
+  --bg-overlay: var(--bw-white);
+  --bg-brand: var(--bg-brand-4);
+  --bg-brand-main: var(--bg-brand-5);
+  --bg-modal-backdrop: #7A7A7A;
+  --dialog-bg: var(--bw-white);
+
+  --divider: var(--grey-80);
+
+  --field-bg-default: var(--grey-95);
+  --field-bg-focused: var(--grey-95);
+  --field-bg-disabled: var(--grey-90);
+  --field-border-default: var(--grey-80);
+  --field-border-focused: var(--grey-5);
+  --field-border-disabled: var(--grey-90);
+
+  --icon-primary: var(--grey-5);
+  --icon-secondary: var(--grey-40);
+  --icon-hint: var(--grey-80);
+  --icon-disabled: var(--grey-70);
+
+  --tx-primary: var(--grey-5);
+  --tx-secondary: var(--grey-40);
+  --tx-hint: var(--grey-80);
+  --tx-disabled: var(--grey-70);
+  --tx-link: var(--blue-50);
+
+  --sem-alert: var(--orange-95);
+  --sem-danger: var(--red-50);
+  --sem-infor: var(--blue-50);
+  --sem-success: var(--green-50);
+
+  --toast-bg-alert: var(--orange-95);
+  --toast-bg-danger: var(--red-95);
+  --toast-bg-default: var(--grey-95);
+  --toast-bg-infor: var(--blue-95);
+  --toast-bg-success: var(--green-95);
+
+  --brand-logo: var(--brand-50);
+  --brand-highlight: var(--brand-50);
+
+  --btn-bg-primary: var(--brand-50);
+  --btn-on-primary: var(--bw-white);
+  --btn-bg-disabled-primary: var(--grey-90);
+  --btn-on-disabled-primary: var(--grey-30);
+
+  --btn-bg-secondary: var(--grey-95);
+  --btn-on-secondary: var(--grey-5);
+  --btn-bg-disabled-secondary: var(--grey-90);
+  --btn-on-disabled-secondary: var(--grey-30);
+
+  --btn-bg-tertiary: #FFFFFF00;
+  --btn-on-tertiary: var(--brand-50);
+  --btn-bg-disabled-tertiary: #FFFFFF00;
+  --btn-on-disabled-tertiary: var(--grey-30);
+
+  --btn-bg-custom: var(--brand-50);
+  --btn-text-custom: var(--bw-black);
+  --btn-bg-loading: var(--brand-95);
+
+  --ui04: #141414;
+  --ui03: #666666;
+  --ui02: #adadad;
+  --ui01: #fafafa;
+  --ui00: #ffffff;
+
+  --primary: #684B31;
+  --primary-bold: #5e544b;
+  --blue: #1273ea;
+  --green: #24cb52;
+  --orange: #FC9C1D;
+  --red: #EB1236;
+  --black: #0a0a0a;
+  --white: #ffffff;
+  --purple: #6A4490;
+  --purple-light: #F0EBFF;
+  --pink: #B04CA6;
+  --red-thin: #D96E7D;
+  --red-bold: #A94C4C;
+  --orange-bold: #BA7F3B;
+  --yellow-bold: #B7AE5D;
+  --green-board: #9EBA65;
+  --green-light: #6BA17D;
+  --blue-light: #4795AD;
+
+  --gradient-from: #ebebeb;
+  --gradient-to: #ffffff;
+
+  //Toastify Override
+  --toastify-color-dark: #454545;
+
+  &.dark {
+    --bg-bot: var(--bw-black);
+    --bg-mid: var(--grey-95);
+    --bg-top: var(--grey-5);
+    --bg-dim: #00000099;
+    --bg-overlay: var(--bw-black);
+    --bg-brand: var(--bg-brand-1);
+    --bg-brand-main: var(--bg-brand-0);
+    --bg-modal-backdrop: #040404;
+    --dialog-bg: var(--bw-black);
+
+    --divider: var(--grey-20);
+
+    --field-bg-default: var(--grey-5);
+    --field-bg-focused: var(--grey-5);
+    --field-bg-disabled: var(--grey-10);
+
+    --field-border-default: var(--grey-20);
+    --field-border-focused: var(--grey-95);
+    --field-border-disabled: var(--grey-10);
+
+    --icon-primary: var(--grey-95);
+    --icon-secondary: var(--grey-60);
+    --icon-hint: var(--grey-20);
+    --icon-disabled: var(--grey-30);
+
+    --tx-primary: var(--grey-95);
+    --tx-secondary: var(--grey-60);
+    --tx-hint: var(--grey-20);
+    --tx-disabled: var(--grey-30);
+    --tx-link: var(--blue-50);
+
+    --sem-alert: var(--orange-10);
+    --sem-danger: var(--red-50);
+    --sem-infor: var(--blue-50);
+    --sem-success: var(--green-50);
+
+    --toast-bg-alert: var(--orange-5);
+    --toast-bg-danger: var(--red-5);
+    --toast-bg-default: var(--grey-5);
+    --toast-bg-infor: var(--blue-10);
+    --toast-bg-success: var(--green-5);
+
+    --brandkey-brand-logo: var(--brand-50);
+    --brandkey-brand-highlight: var(--brand-50);
+
+    --btn-bg-primary: var(--brand-50);
+    --btn-on-primary: var(--bw-black);
+    --btn-bg-disabled-primary: var(--grey-10);
+    --btn-on-disabled-primary: var(--grey-30);
+
+    --btn-bg-secondary: var(--grey-5);
+    --btn-on-secondary: var(--grey-95);
+    --btn-bg-disabled-secondary: var(--grey-10);
+    --btn-on-disabled-secondary: var(--grey-30);
+
+    --btn-bg-tertiary: #FFFFFF00;
+    --btn-on-tertiary: var(--brand-50);
+    --btn-bg-disabled-tertiary: #FFFFFF00;
+    --btn-on-disabled-tertiary: var(--grey-30);
+
+    --btn-bg-custom: var(--brand-50);
+    --btn-text-custom: var(--bw-black);
+    --btn-bg-loading: var(--brand-95);
+  }
+}

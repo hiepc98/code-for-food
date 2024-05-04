@@ -1,0 +1,125 @@
+@keyframes nftMoving {
+  0% {
+    transform: translateY(0);
+  }
+
+  20% {
+    transform: translateY(10%);
+  }
+
+  40% {
+    transform: translateY(7%);
+  }
+
+  60% {
+    transform: translateY(12%);
+  }
+
+  60% {
+    transform: translateY(10%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleOn {
+  0% {
+    opacity: 1;
+    transform: translate(-35%, 0);
+  }
+
+  50% {
+    opacity: 0.45;
+    transform: translate(-35%, -10%);
+  }
+
+  75% {
+    opacity: 0.75;
+    transform: translate(-35%, 10%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-35%, 0);
+  }
+}
+
+@keyframes dotAnimation {
+  0% {
+    background-position: 0%;
+  }
+
+  100% {
+    background-position: -1000%;
+  }
+}
+
+@keyframes floatingBubble {
+}
+
+@keyframes movingUpDown {
+  0% {
+    transform: translateY(0);
+  }
+
+  25% {
+    transform: translateY(5%);
+  }
+
+  50% {
+    transform: translateY(-5%);
+  }
+
+  75% {
+    transform: translateY(5%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes meteorAnim {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-2px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes backgroundPosition {
+  0% {
+    background-position: -175% 0;
+  }
+
+  100% {
+    background-position: 350% 0;
+  }
+}
+
+//Animation Class
+.moving-up-down {
+  animation: movingUpDown 5s linear infinite forwards;
+}
+
+@keyframes loading {
+  0% {
+    transform: translateY(120%) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-10%) rotate(480deg);
+  }
+
+  100% {
+    transform: translateY(120%) rotate(0deg);
+  }
+}

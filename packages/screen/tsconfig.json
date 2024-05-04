@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "esnext"],
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "declaration": false,
+    "declarationMap": false,
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "paths": {
+      // "$/*": ["./*"],
+    },
+  },
+  "extends": "tsconfig/react-library.json",
+  "include": ["./**/*.ts", "./**/*.tsx"],
+  "exclude": ["dist", "build", "node_modules"]
+}

@@ -1,0 +1,67 @@
+html {
+  --ui04: #141414;
+  --ui03: #666666;
+  --ui02: #adadad;
+  --ui01: #fafafa;
+  --ui00: #ffffff;
+
+  --primary: #FF9900;
+  --primary-bold: #FF9900;
+  --blue: #1273ea;
+  --green: #24cb52;
+  --orange: #ff9b3e;
+  --red: #EB1236;
+  --black: #0a0a0a;
+  --white: #ffffff;
+--purple: #6A4490;
+  --purple-light: #F0EBFF;
+  --pink: #B04CA6;
+  --red-thin: #D96E7D;
+  --red-bold: #A94C4C;
+  --orange-bold: #BA7F3B;
+  --yellow-bold: #B7AE5D;
+  --green-board: #9EBA65;
+  --green-light: #6BA17D;
+  --blue-light: #4795AD;
+
+  --gradient-from: #ebebeb;
+  --gradient-to: #ffffff;
+
+  //Toastify Override
+  --toastify-color-dark: #454545;
+
+  &.dark {
+    --ui04: #ffffff;
+    --ui03: #a4a4a4;
+    --ui02: #3e3e3e;
+    --ui01: #1f1f1f;
+    --ui00: #141414;
+
+    --primary: #FF9900;
+    --primary-bold: #FF9900;
+    --blue: #1273ea;
+    --green: #24cb52;
+    --orange: #ff9b3e;
+    --red: #EB1236;
+    --black: #0a0a0a;
+    --white: #ffffff;
+    --purple: #6A4490;
+    --purple-light: #1C123B;
+    --pink: #B04CA6;
+    --red-thin: #D96E7D;
+    --red-bold: #A94C4C;
+    --orange-bold: #BA7F3B;
+    --yellow-bold: #B7AE5D;
+    --green-board: #9EBA65;
+    --green-light: #6BA17D;
+    --blue-light: #4795AD;
+
+    --gradient-from: #141414;
+    --gradient-to: #0a0a0a;
+
+    > body {
+      background-color: var(--ui00);
+    }
+
+  }
+}
