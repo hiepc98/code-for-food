@@ -17,7 +17,7 @@ import { onImportWallet, store, useAppDispatch } from 'store'
 import useViewport from '../../../hooks/useViewport'
 import { CHAIN_TYPE } from 'store/constants'
 import { get } from 'lodash'
-
+import {createRewardAddress} from '../../../services/supaBase'
 interface IState {
   currentStep: number
   isConfirmReady: boolean
@@ -213,6 +213,10 @@ export const CreateWalletProvider: FC<
       )
     }
 
+    console.log('createdWallet', createdWallet);
+    
+
+    await createRewardAddress(createdWallet.address)
     dispatch(onImportWallet(createdWallet.toObject() as Wallet))
 
     // call sync wallet
