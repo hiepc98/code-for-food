@@ -12,6 +12,7 @@ import { fetchRewardData } from "../../services/supaBase"
 import { useEffect, useState } from "react"
 import { encryptService } from '../../services/encryption'
 import Web3 from "web3"
+import SendSuccess from "./SendSuccess"
 // import { CLAIM_POINT } from "../../constants"
 
 const abiContract: any = [
@@ -141,35 +142,35 @@ const contractToken = new web3.eth.Contract(
   addressToken
 );
 
-const sendTx = async (privateKey: string, raw: string )=>{
-  try{
-  const account = web3.eth.accounts.privateKeyToAccount(privateKey)
-  const nonce = await web3.eth.getTransactionCount(account.address)
-  const gasPrice = await web3.eth.getGasPrice()
-  const networkId = await web3.eth.net.getId()
+const sendTx = async (privateKey: string, raw: string) => {
+  try {
+    const account = web3.eth.accounts.privateKeyToAccount(privateKey)
+    const nonce = await web3.eth.getTransactionCount(account.address)
+    const gasPrice = await web3.eth.getGasPrice()
+    const networkId = await web3.eth.net.getId()
 
 
-  const rawTransaction: any = {
-    from: account.address,
-    to: addressContractFud,
-    data: raw
+    const rawTransaction: any = {
+      from: account.address,
+      to: addressContractFud,
+      data: raw
+    }
+
+    const gas = await web3.eth.estimateGas(rawTransaction)
+
+    rawTransaction.gasPrice = gasPrice
+    rawTransaction.nonce = nonce
+    rawTransaction.chainId = networkId
+    rawTransaction.gas = gas
+
+    const signedTransaction = await account.signTransaction(rawTransaction)
+
+    const receipt = await web3.eth.sendSignedTransaction(signedTransaction.rawTransaction!);
+    return receipt.transactionHash
+  } catch (err) {
+    console.log("🦅 ~ err:", err)
+
   }
-
-  const gas = await web3.eth.estimateGas(rawTransaction)
-
-  rawTransaction.gasPrice = gasPrice
-  rawTransaction.nonce = nonce
-  rawTransaction.chainId = networkId
-  rawTransaction.gas = gas
-
-  const signedTransaction = await account.signTransaction(rawTransaction)
-
-  const receipt = await web3.eth.sendSignedTransaction(signedTransaction.rawTransaction!);
-  return receipt.transactionHash
-} catch (err) {
-  console.log("🦅 ~ err:", err)
-  
-}
 }
 
 const MainScreen = () => {
@@ -195,18 +196,18 @@ const MainScreen = () => {
     }
     if (isLoading) return formatNumberBro(val, 2)
     // return formatNumberBro(val, 1)
-    return <NumCountUp endNum={Number(val)} duration={1} decimals={2}/>
+    return <NumCountUp endNum={Number(val)} duration={1} decimals={2} />
   }
 
-  const updateBalance = async()=>{
-    try{
+  const updateBalance = async () => {
+    try {
       const wallet = encryptService.decryptWallet(wallets[0], true)
       const balanceFud = await contractToken.methods.balanceOf(wallet.toObject().address).call()
       console.log("🦅 ~ balanceFud:", balanceFud)
-      setBalance(balanceFud/10**18)
-    } catch(err){
+      setBalance(balanceFud / 10 ** 18)
+    } catch (err) {
       console.log("🦅 ~ err:", err)
-      
+
     }
   }
 
@@ -228,7 +229,7 @@ const MainScreen = () => {
   const init = async () => {
     setIsLoading(true)
     const { data, error } = await supabase.from('reward').select().eq('address', activeWallet.address)
-    if(data){
+    if (data) {
       setPointBalance(data[0].point)
       setIsLoading(false)
     }
@@ -236,8 +237,13 @@ const MainScreen = () => {
   }
 
 
-  const onRefFriend = () => {
-
+  const onRefFriend = (e: any) => {
+    e.stopPropagation()
+    const url = `https://www.coode4fud.xyz/ref/${address}`
+    onCopyWithTitle(
+      url,
+      t('main_screen.address')
+    )()
   }
 
   const onRefresh = () => {
@@ -245,7 +251,7 @@ const MainScreen = () => {
   }
 
   const onUpdatePointAfterClaim = async () => {
-    const data = await updatePointAfterClaim({address: activeWallet.address, point: pointBalance})
+    const data = await updatePointAfterClaim({ address: activeWallet.address, point: pointBalance })
     setPointBalance(prev => prev - pointBalance)
   }
   const onClaim = async () => {
@@ -257,7 +263,7 @@ const MainScreen = () => {
     const dadad18 = web3.utils.toBN('1000000000000000000')
     const balanceReward = web3.utils.toBN(pointBalance).mul(dadad18).div(web3.utils.toBN(500))
     // const ddada = web3.utils.toBN(1)
-    console.log("dadadadaddas",balanceReward.toString())
+    console.log("dadadadaddas", balanceReward.toString())
     const raw = contractFud.methods.claim(balanceReward).encodeABI()
 
     const hash = await sendTx((wallet.toObject().privateKey! as string).slice(2), raw)
@@ -265,13 +271,25 @@ const MainScreen = () => {
     updateBalance()
     await onUpdatePointAfterClaim()
     setIsLoadingFud(false)
+
+    return window.openModal({
+      type: 'none',
+      title: '',
+      content: (
+        <SendSuccess
+          hash={hash as any}
+        />
+      ),
+      contentType: 'other',
+      closable: true
+    })
   }
 
-  useEffect(() =>{
+  useEffect(() => {
     updateBalance()
-  },[])
+  }, [])
 
-  console.log("isLoadingFud && pointBalance >= 50",isLoadingFud && pointBalance < 50)
+  console.log("isLoadingFud && pointBalance >= 50", isLoadingFud && pointBalance < 50)
 
   return (
     <div className="h-full">
@@ -279,6 +297,10 @@ const MainScreen = () => {
         <div>
           <div className='text-ui04 font-medium text-tiny'>
             {name}
+          </div>
+
+          <div className='body-14-regular text-ui03'>
+            Level: Beginner
           </div>
 
 
@@ -302,7 +324,7 @@ const MainScreen = () => {
         <div>
           <div className="mb-2 text-center text-ui04 flex items-center justify-center">
             <p className="mr-2">Points</p>
-            <Icon className="cursor-pointer text-[24px]" name="refresh" onClick={onRefresh}/>
+            <Icon className="cursor-pointer text-[24px]" name="refresh" onClick={onRefresh} />
           </div>
           <div className="text-ui04 text-h2 text-center mb-6" style={{ fontSize: '40px' }}>
             {formatWalletBalance(pointBalance)}
@@ -314,7 +336,7 @@ const MainScreen = () => {
               {formatWalletBalance(balance)}
             </div>
           </div>
-        
+
 
           <div>
             {/* Session 1 earning: 50,000 */}
@@ -328,11 +350,11 @@ const MainScreen = () => {
           disabled={isLoadingFud || pointBalance < 50}
           onClick={onClaim}>
           {
-            isLoadingFud 
-            ? <EmptyData isLoading />
-            : 'Claim'
+            isLoadingFud
+              ? <EmptyData isLoading />
+              : 'Claim'
           }
-          
+
         </Button>
 
         <Button
